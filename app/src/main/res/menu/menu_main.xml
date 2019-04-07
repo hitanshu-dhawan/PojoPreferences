@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_save"
+        android:icon="@mipmap/twotone_save_black_24dp"
+        android:title="Save"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_refresh"
+        android:icon="@mipmap/twotone_refresh_black_24dp"
+        android:title="Refresh"
+        app:showAsAction="ifRoom" />
+</menu>
