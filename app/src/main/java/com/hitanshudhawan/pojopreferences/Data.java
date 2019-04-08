@@ -1,7 +1,9 @@
 package com.hitanshudhawan.pojopreferences;
 
+import com.hitanshudhawan.annotations.Pojo;
 import com.hitanshudhawan.annotations.Pref;
 
+@Pojo
 public class Data {
     @Pref
     private boolean a;
@@ -21,4 +23,6 @@ public class Data {
     private Long h;
     @Pref
     private String i;
+    //
+    private Short j;
 }
