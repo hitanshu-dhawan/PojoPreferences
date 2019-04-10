@@ -32,6 +32,9 @@ UserPref.setName(context, "Hitanshu");
 UserPref.getId(context);
 UserPref.getName(context);
 ```
+The generated file will look like [this](app/src/main/java/com/hitanshudhawan/pojopreferences/sample/UserPrefSample.txt).
+<br>
+<br>
 <b>Note:</b> It's important for the variables to be declared `final` if you're providing default values for them.
 
 ## Download
