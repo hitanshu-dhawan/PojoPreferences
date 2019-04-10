@@ -24,7 +24,7 @@ public class User {
 ```
 Now, PojoPreferences will generate a new class with <b>"Pref"</b> as its suffix. In this case `UserPref`.
 <br>
-It class will contain all the setters and getters for your Pojo variables.
+It contains all the setters and getters for your Pojo variables which uses SharedPreferences as the source of truth.
 ```
 UserPref.setId(context, 7);
 UserPref.setName(context, "Hitanshu");
@@ -32,6 +32,7 @@ UserPref.setName(context, "Hitanshu");
 UserPref.getId(context);
 UserPref.getName(context);
 ```
+<b>Note:</b> It's important for the variables to be declared `final` if you're providing default values for them.
 
 ## Download
 Add JitPack repository to your root `build.gradle` file
