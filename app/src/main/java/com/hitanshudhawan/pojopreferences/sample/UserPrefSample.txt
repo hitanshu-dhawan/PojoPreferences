@@ -1,0 +1,27 @@
+public class UserPref {
+
+    public static void setId(Context context, int id) {
+        if (Build.VERSION.SDK_INT >= 9) {
+            context.getSharedPreferences("com.hitanshudhawan.preferences.UserPref", Context.MODE_PRIVATE).edit().putInt("id", id).apply();
+        } else {
+            context.getSharedPreferences("com.hitanshudhawan.preferences.UserPref", Context.MODE_PRIVATE).edit().putInt("id", id).commit();
+        }
+    }
+
+    public static int getId(Context context) {
+        return context.getSharedPreferences("com.hitanshudhawan.preferences.UserPref", Context.MODE_PRIVATE).getInt("id", 2);
+    }
+
+    public static void setName(Context context, String name) {
+        if (Build.VERSION.SDK_INT >= 9) {
+            context.getSharedPreferences("com.hitanshudhawan.preferences.UserPref", Context.MODE_PRIVATE).edit().putString("name", name).apply();
+        } else {
+            context.getSharedPreferences("com.hitanshudhawan.preferences.UserPref", Context.MODE_PRIVATE).edit().putString("name", name).commit();
+        }
+    }
+
+    public static String getName(Context context) {
+        return context.getSharedPreferences("com.hitanshudhawan.preferences.UserPref", Context.MODE_PRIVATE).getString("name", "Dhawan");
+    }
+
+}
