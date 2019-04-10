@@ -1,9 +1,10 @@
 # PojoPreferences
-PojoPreferences is an android library for saving your Pojo variables into SharedPreferences by generating its boilerplate code using annotation processing.
+PojoPreferences is an android library for saving your Pojo variables into [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html) by generating its boilerplate code using annotation processing.
 
 ## Usage
-Create your Pojo class and annotate its variables with <b>`@Pref`</b>
+Create your Pojo class by annotating it with <b>`@Pojo`</b> and its variables with <b>`@Pref`</b>
 ```
+@Pojo
 public class User {
     @Pref
     private int id;
@@ -11,9 +12,19 @@ public class User {
     private String name;
 }
 ```
-Now, PojoPreferences will generate a new class with <b>"Pref"</b> as its suffix.
+If you want to specify default values for your variables
+```
+@Pojo
+public class User {
+    @Pref
+    private final int id = 2;
+    @Pref
+    private final String name = "Dhawan";
+}
+```
+Now, PojoPreferences will generate a new class with <b>"Pref"</b> as its suffix. In this case `UserPref`.
 <br>
-This class will contain all the setters and getters for your Pojo variables.
+It class will contain all the setters and getters for your Pojo variables.
 ```
 UserPref.setId(context, 7);
 UserPref.setName(context, "Hitanshu");
@@ -34,8 +45,8 @@ allprojects {
 Add the dependency to your app `build.gradle` file
 ```
 dependencies {
-    implementation 'com.github.hitanshu-dhawan.PojoPreferences:annotations:1.0.1'
-    annotationProcessor 'com.github.hitanshu-dhawan.PojoPreferences:compiler:1.0.1'
+    implementation 'com.github.hitanshu-dhawan.PojoPreferences:annotations:1.0.2'
+    annotationProcessor 'com.github.hitanshu-dhawan.PojoPreferences:compiler:1.0.2'
 }
 ```
 
