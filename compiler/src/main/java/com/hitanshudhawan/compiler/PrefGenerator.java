@@ -18,9 +18,10 @@ import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
+import static com.hitanshudhawan.compiler.PrefUtils.getSharedPreferencesDefaultValue;
 import static com.hitanshudhawan.compiler.PrefUtils.getSharedPreferencesMethodName;
+import static com.hitanshudhawan.compiler.PrefUtils.isVariableSupported;
 import static com.hitanshudhawan.compiler.Utils.capitalize;
-import static com.hitanshudhawan.compiler.Utils.defaultVariableValue;
 
 class PrefGenerator {
 
@@ -44,7 +45,7 @@ class PrefGenerator {
 
         for (VariableElement variableElement : ElementFilter.fieldsIn(typeElement.getEnclosedElements())) {
             if (variableElement.getAnnotation(Pref.class) == null) break;
-            if (!PrefUtils.isVariableSupported(variableElement)) {
+            if (!isVariableSupported(variableElement)) {
                 messager.printMessage(Diagnostic.Kind.ERROR, variableElement.asType().toString() + " is not supported", variableElement);
                 break;
             }
@@ -111,7 +112,7 @@ class PrefGenerator {
                 ClassName.get("android.content", "Context"),
                 getSharedPreferencesMethodName(variableElement),
                 variableName,
-                defaultVariableValue(variableElement)
+                getSharedPreferencesDefaultValue(variableElement)
         };
     }
 

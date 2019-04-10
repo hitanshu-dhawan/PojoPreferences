@@ -31,23 +31,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Boolean"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Boolean_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="float"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -55,23 +38,6 @@
 
         <EditText
             android:id="@+id/float_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Float"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Float_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -99,23 +65,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Integer"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Integer_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="long"
             android:textColor="@android:color/black"
             android:textSize="18sp"
@@ -123,23 +72,6 @@
 
         <EditText
             android:id="@+id/long_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Long"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Long_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

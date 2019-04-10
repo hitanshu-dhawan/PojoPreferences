@@ -6,23 +6,13 @@ import com.hitanshudhawan.annotations.Pref;
 @Pojo
 public class Data {
     @Pref
-    private boolean a;
+    private final boolean a = true;
     @Pref
-    private Boolean b;
+    private final float b = 98.6F;
     @Pref
-    private float c;
+    private int c;
     @Pref
-    private Float d;
+    private final long d = 123456789L;
     @Pref
-    private int e;
-    @Pref
-    private Integer f;
-    @Pref
-    private long g;
-    @Pref
-    private Long h;
-    @Pref
-    private String i;
-    //
-    private Short j;
+    private final String e = "Hitanshu";
 }

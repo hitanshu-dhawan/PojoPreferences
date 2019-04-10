@@ -9,13 +9,9 @@ class PrefUtils {
 
     private static Set<String> supportedVariables = new HashSet<String>() {{
         add(boolean.class.getCanonicalName());
-        add(Boolean.class.getCanonicalName());
         add(float.class.getCanonicalName());
-        add(Float.class.getCanonicalName());
         add(int.class.getCanonicalName());
-        add(Integer.class.getCanonicalName());
         add(long.class.getCanonicalName());
-        add(Long.class.getCanonicalName());
         add(String.class.getCanonicalName());
     }};
 
@@ -24,20 +20,52 @@ class PrefUtils {
     }
 
     static String getSharedPreferencesMethodName(VariableElement variableElement) {
+        if (!isVariableSupported(variableElement))
+            throw new UnsupportedOperationException(variableElement.asType().toString() + " is not supported");
+
         String variableType = variableElement.asType().toString();
-        if (variableType.equals(boolean.class.getCanonicalName()) || variableType.equals(Boolean.class.getCanonicalName())) {
+        if (variableType.equals(boolean.class.getCanonicalName())) {
             return "Boolean";
-        } else if (variableType.equals(float.class.getCanonicalName()) || variableType.equals(Float.class.getCanonicalName())) {
+        } else if (variableType.equals(float.class.getCanonicalName())) {
             return "Float";
-        } else if (variableType.equals(int.class.getCanonicalName()) || variableType.equals(Integer.class.getCanonicalName())) {
+        } else if (variableType.equals(int.class.getCanonicalName())) {
             return "Int";
-        } else if (variableType.equals(long.class.getCanonicalName()) || variableType.equals(Long.class.getCanonicalName())) {
+        } else if (variableType.equals(long.class.getCanonicalName())) {
             return "Long";
         } else if (variableType.equals(String.class.getCanonicalName())) {
             return "String";
-        } else {
-            throw new UnsupportedOperationException(variableElement.asType().toString() + " is not supported");
         }
+        return null;
+    }
+
+    static String getSharedPreferencesDefaultValue(VariableElement variableElement) {
+        if (!isVariableSupported(variableElement))
+            throw new UnsupportedOperationException(variableElement.asType().toString() + " is not supported");
+
+        String variableType = variableElement.asType().toString();
+        if (variableElement.getConstantValue() != null) {
+            Object defaultValue = variableElement.getConstantValue();
+            if (variableType.equals(float.class.getCanonicalName())) {
+                return defaultValue + "F";
+            } else if (variableType.equals(String.class.getCanonicalName())) {
+                return "\"" + defaultValue + "\"";
+            } else {
+                return defaultValue.toString();
+            }
+        } else {
+            if (variableType.equals(boolean.class.getCanonicalName())) {
+                return "false";
+            } else if (variableType.equals(float.class.getCanonicalName())) {
+                return "0.0F";
+            } else if (variableType.equals(int.class.getCanonicalName())) {
+                return "0";
+            } else if (variableType.equals(long.class.getCanonicalName())) {
+                return "0L";
+            } else if (variableType.equals(String.class.getCanonicalName())) {
+                return "\"\"";
+            }
+        }
+        return null;
     }
 
 }

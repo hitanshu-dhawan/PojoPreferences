@@ -10,13 +10,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText booleanEditText;
-    private EditText BooleanEditText;
     private EditText floatEditText;
-    private EditText FloatEditText;
     private EditText intEditText;
-    private EditText IntegerEditText;
     private EditText longEditText;
-    private EditText LongEditText;
     private EditText StringEditText;
 
     @Override
@@ -25,13 +21,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         booleanEditText = findViewById(R.id.boolean_edit_text);
-        BooleanEditText = findViewById(R.id.Boolean_edit_text);
         floatEditText = findViewById(R.id.float_edit_text);
-        FloatEditText = findViewById(R.id.Float_edit_text);
         intEditText = findViewById(R.id.int_edit_text);
-        IntegerEditText = findViewById(R.id.Integer_edit_text);
         longEditText = findViewById(R.id.long_edit_text);
-        LongEditText = findViewById(R.id.Long_edit_text);
         StringEditText = findViewById(R.id.String_edit_text);
 
         refresh();
@@ -61,28 +53,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void save() {
         DataPref.setA(this, Boolean.valueOf(booleanEditText.getText().toString()));
-        DataPref.setB(this, Boolean.valueOf(BooleanEditText.getText().toString()));
-        DataPref.setC(this, Float.valueOf(floatEditText.getText().toString()));
-        DataPref.setD(this, Float.valueOf(FloatEditText.getText().toString()));
-        DataPref.setE(this, Integer.valueOf(intEditText.getText().toString()));
-        DataPref.setF(this, Integer.valueOf(IntegerEditText.getText().toString()));
-        DataPref.setG(this, Long.valueOf(longEditText.getText().toString()));
-        DataPref.setH(this, Long.valueOf(LongEditText.getText().toString()));
-        DataPref.setI(this, StringEditText.getText().toString());
+        DataPref.setB(this, Float.valueOf(floatEditText.getText().toString()));
+        DataPref.setC(this, Integer.valueOf(intEditText.getText().toString()));
+        DataPref.setD(this, Long.valueOf(longEditText.getText().toString()));
+        DataPref.setE(this, StringEditText.getText().toString());
 
         refresh();
     }
 
     private void refresh() {
         booleanEditText.setText(String.valueOf(DataPref.getA(this)));
-        BooleanEditText.setText(String.valueOf(DataPref.getB(this)));
-        floatEditText.setText(String.valueOf(DataPref.getC(this)));
-        FloatEditText.setText(String.valueOf(DataPref.getD(this)));
-        intEditText.setText(String.valueOf(DataPref.getE(this)));
-        IntegerEditText.setText(String.valueOf(DataPref.getF(this)));
-        longEditText.setText(String.valueOf(DataPref.getG(this)));
-        LongEditText.setText(String.valueOf(DataPref.getH(this)));
-        StringEditText.setText(DataPref.getI(this));
+        floatEditText.setText(String.valueOf(DataPref.getB(this)));
+        intEditText.setText(String.valueOf(DataPref.getC(this)));
+        longEditText.setText(String.valueOf(DataPref.getD(this)));
+        StringEditText.setText(DataPref.getE(this));
     }
 }
 
