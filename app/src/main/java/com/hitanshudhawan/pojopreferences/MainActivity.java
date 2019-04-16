@@ -7,6 +7,9 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText booleanEditText;
@@ -14,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText intEditText;
     private EditText longEditText;
     private EditText StringEditText;
+    private EditText StringSetEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         intEditText = findViewById(R.id.int_edit_text);
         longEditText = findViewById(R.id.long_edit_text);
         StringEditText = findViewById(R.id.String_edit_text);
+        StringSetEditText = findViewById(R.id.StringSet_edit_text);
 
         refresh();
     }
@@ -57,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         DataPref.setC(this, Integer.valueOf(intEditText.getText().toString()));
         DataPref.setD(this, Long.valueOf(longEditText.getText().toString()));
         DataPref.setE(this, StringEditText.getText().toString());
+        DataPref.setF(this, new HashSet<>(Arrays.asList(StringSetEditText.getText().toString().split(","))));
+
 
         refresh();
     }
@@ -67,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         intEditText.setText(String.valueOf(DataPref.getC(this)));
         longEditText.setText(String.valueOf(DataPref.getD(this)));
         StringEditText.setText(DataPref.getE(this));
+        StringSetEditText.setText(String.valueOf(DataPref.getF(this)));
     }
 }
 
