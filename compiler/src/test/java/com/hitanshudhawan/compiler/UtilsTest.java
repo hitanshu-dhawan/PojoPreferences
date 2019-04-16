@@ -13,4 +13,5 @@ public class UtilsTest {
         assertEquals(Utils.capitalize("ABTesting"), "ABTesting");
         assertEquals(Utils.capitalize("user"), "User");
     }
+
 }

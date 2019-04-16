@@ -16,9 +16,7 @@ import static org.mockito.Mockito.when;
 
 public class PrefUtilsTest {
 
-    @Mock
     private VariableElement mockedVariableElement;
-    @Mock
     private TypeMirror mockedTypeMirror;
 
     @Before
