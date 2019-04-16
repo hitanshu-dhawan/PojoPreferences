@@ -3,6 +3,8 @@ package com.hitanshudhawan.pojopreferences;
 import com.hitanshudhawan.annotations.Pojo;
 import com.hitanshudhawan.annotations.Pref;
 
+import java.util.Set;
+
 @Pojo
 public class Data {
     @Pref
@@ -15,4 +17,6 @@ public class Data {
     private final long d = 123456789L;
     @Pref
     private final String e = "Hitanshu";
+    @Pref
+    private Set<String> f;
 }

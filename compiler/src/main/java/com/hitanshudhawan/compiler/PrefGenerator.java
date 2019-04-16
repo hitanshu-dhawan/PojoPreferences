@@ -1,6 +1,9 @@
 package com.hitanshudhawan.compiler;
 
+import android.support.annotation.RequiresApi;
+
 import com.hitanshudhawan.annotations.Pref;
+import com.squareup.javapoet.AnnotationSpec;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -20,6 +23,7 @@ import javax.tools.Diagnostic;
 
 import static com.hitanshudhawan.compiler.PrefUtils.getSharedPreferencesDefaultValue;
 import static com.hitanshudhawan.compiler.PrefUtils.getSharedPreferencesMethodName;
+import static com.hitanshudhawan.compiler.PrefUtils.getSharedPreferencesMinApi;
 import static com.hitanshudhawan.compiler.PrefUtils.isVariableSupported;
 import static com.hitanshudhawan.compiler.Utils.capitalize;
 
@@ -73,6 +77,7 @@ class PrefGenerator {
         String variableName = variableElement.getSimpleName().toString();
         return MethodSpec
                 .methodBuilder("set" + capitalize(variableName))
+                .addAnnotation(getRequiresApiAnnotation(variableElement))
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(void.class)
                 .addParameter(ClassName.get("android.content", "Context"), "context")
@@ -89,11 +94,16 @@ class PrefGenerator {
         String variableName = variableElement.getSimpleName().toString();
         return MethodSpec
                 .methodBuilder("get" + capitalize(variableName))
+                .addAnnotation(getRequiresApiAnnotation(variableElement))
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.get(variableElement.asType()))
                 .addParameter(ClassName.get("android.content", "Context"), "context")
                 .addStatement("return context.getSharedPreferences($S, $T.MODE_PRIVATE).get$N($S, $N)", getGetterStatementArgs(packageName, generatedClassName, variableName, variableElement))
                 .build();
+    }
+
+    private AnnotationSpec getRequiresApiAnnotation(VariableElement variableElement) {
+        return AnnotationSpec.builder(RequiresApi.class).addMember("value", "$L", getSharedPreferencesMinApi(variableElement)).build();
     }
 
     private Object[] getSetterStatementArgs(String packageName, String generatedClassName, String variableName, VariableElement variableElement) {
