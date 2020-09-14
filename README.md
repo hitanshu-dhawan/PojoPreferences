@@ -1,3 +1,8 @@
+## Deprecated
+PojoPreferences is deprecated in favor of [Jetpack DataStore](https://developer.android.com/topic/libraries/architecture/datastore).
+
+---
+
 # PojoPreferences
 PojoPreferences is an android library for saving your Pojo variables into [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html) by generating its boilerplate code using annotation processing.
 
